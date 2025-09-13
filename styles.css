@@ -248,7 +248,7 @@ p {
 /* About Section */
 .about {
     padding: 100px 0;
-    background: #111111;
+    background: #000000;
 }
 
 .about-content {
@@ -567,7 +567,7 @@ p {
 /* Contact Section */
 .contact {
     padding: 100px 0;
-    background: #111111;
+    background: #000000;
 }
 
 .contact-content {
@@ -946,7 +946,7 @@ p {
 
 .collection-gallery {
     padding: 80px 0;
-    background: #111111;
+    background: #000000;
 }
 
 .artwork-grid {
