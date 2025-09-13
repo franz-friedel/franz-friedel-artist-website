@@ -19,6 +19,16 @@ app.post('/create-checkout-session', async (req, res) => {
   try {
     const { artworkName, price, description, imageUrl } = req.body;
     
+    // Validate and clean data
+    const cleanImageUrl = imageUrl && imageUrl.startsWith('http') ? imageUrl : 'https://www.franzfriedel.art/images/boundaries-1.jpg';
+    
+    console.log('Server received data:', {
+      artworkName,
+      price,
+      description,
+      imageUrl: cleanImageUrl
+    });
+    
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: [{
@@ -27,7 +37,7 @@ app.post('/create-checkout-session', async (req, res) => {
           product_data: {
             name: artworkName,
             description: description,
-            images: [imageUrl],
+            images: [cleanImageUrl],
           },
           unit_amount: price, // Price is already in cents from frontend
         },

@@ -14,7 +14,19 @@ async function handlePurchase(artworkName, price, description) {
         
         // Get artwork image URL
         const imageElement = document.querySelector('.artwork-main-image, .artwork-image img');
-        const imageUrl = imageElement ? imageElement.src : '';
+        const imageUrl = imageElement ? imageElement.src : 'https://www.franzfriedel.art/images/boundaries-1.jpg';
+        
+        // Validate and clean data
+        const cleanArtworkName = artworkName ? artworkName.trim() : 'Artwork';
+        const cleanDescription = description ? description.trim() : 'Contemporary artwork by Franz Friedel';
+        const cleanPrice = Math.round(parseFloat(price) * 100);
+        
+        console.log('Sending data to Stripe:', {
+            artworkName: cleanArtworkName,
+            price: cleanPrice,
+            description: cleanDescription,
+            imageUrl: imageUrl
+        });
         
         // Create checkout session
         const response = await fetch('/create-checkout-session', {
@@ -23,9 +35,9 @@ async function handlePurchase(artworkName, price, description) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                artworkName: artworkName,
-                price: Math.round(parseFloat(price) * 100), // Convert to cents
-                description: description,
+                artworkName: cleanArtworkName,
+                price: cleanPrice,
+                description: cleanDescription,
                 imageUrl: imageUrl
             })
         });
