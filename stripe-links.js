@@ -1,17 +1,17 @@
 // Ultra-simple Stripe payment using Payment Links
 // No server needed, works perfectly with GitHub Pages
 
-// Stripe Payment Links (create these in Stripe Dashboard)
+// Stripe Payment Links - Your actual payment links from Stripe Dashboard
 const paymentLinks = {
-    'Boundaries I': 'https://buy.stripe.com/your-link-1', // Replace with actual payment links
-    'Boundaries II': 'https://buy.stripe.com/your-link-2',
-    'Boundaries III': 'https://buy.stripe.com/your-link-3',
-    'Boundaries IV': 'https://buy.stripe.com/your-link-4',
-    'Boundaries V': 'https://buy.stripe.com/your-link-5',
-    'Boundaries VI': 'https://buy.stripe.com/your-link-6',
-    'Boundaries VII': 'https://buy.stripe.com/your-link-7',
-    'Boundaries VIII': 'https://buy.stripe.com/your-link-8',
-    'Boundaries IX': 'https://buy.stripe.com/your-link-9'
+    'Boundaries I': 'https://buy.stripe.com/28EbJ3bnoaP96vMdBeaVa00',
+    'Boundaries II': 'https://buy.stripe.com/4gMcN7gHI8H11bsgNqaVa01',
+    'Boundaries III': 'https://buy.stripe.com/14AaEZfDEbTd5rI8gUaVa02',
+    'Boundaries IV': 'https://buy.stripe.com/dRm14p4Z04qLdYeap2aVa03',
+    'Boundaries V': 'https://buy.stripe.com/14A5kF6348H1g6mcxaaVa04',
+    'Boundaries VI': 'https://buy.stripe.com/dRm28t1MOe1l5rIdBeaVa05',
+    'Boundaries VII': 'https://buy.stripe.com/28E3cxbnog9t5rI1SwaVa06',
+    'Boundaries VIII': 'https://buy.stripe.com/fZucN72QS7CX3jA2WAaVa07',
+    'Boundaries IX': 'https://buy.stripe.com/9B6cN7crse1ldYegNqaVa08'
 };
 
 function handlePaymentLink(artworkName) {
