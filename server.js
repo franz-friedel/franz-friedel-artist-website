@@ -19,13 +19,19 @@ app.post('/create-checkout-session', async (req, res) => {
   try {
     const { artworkName, price, description, imageUrl } = req.body;
     
-    // Validate and clean data
-    const cleanImageUrl = imageUrl && imageUrl.startsWith('http') ? imageUrl : 'https://www.franzfriedel.art/images/boundaries-1.jpg';
+    // Validate and clean data with strict validation
+    const cleanArtworkName = (artworkName && typeof artworkName === 'string') ? artworkName.trim() : 'Artwork';
+    const cleanDescription = (description && typeof description === 'string') ? description.trim() : 'Contemporary artwork by Franz Friedel';
+    const cleanPrice = (price && !isNaN(price)) ? parseInt(price) : 50000; // Default to $500 in cents
+    const cleanImageUrl = (imageUrl && typeof imageUrl === 'string' && imageUrl.startsWith('http')) ? imageUrl : 'https://www.franzfriedel.art/images/boundaries-1.jpg';
+    
+    // Ensure price is within valid range (Stripe requires 50 cents minimum)
+    const validPrice = Math.max(50, Math.min(99999999, cleanPrice));
     
     console.log('Server received data:', {
-      artworkName,
-      price,
-      description,
+      artworkName: cleanArtworkName,
+      price: validPrice,
+      description: cleanDescription,
       imageUrl: cleanImageUrl
     });
     
@@ -35,11 +41,11 @@ app.post('/create-checkout-session', async (req, res) => {
         price_data: {
           currency: 'usd',
           product_data: {
-            name: artworkName,
-            description: description,
+            name: cleanArtworkName,
+            description: cleanDescription,
             images: [cleanImageUrl],
           },
-          unit_amount: price, // Price is already in cents from frontend
+          unit_amount: validPrice,
         },
         quantity: 1,
       }],
@@ -47,7 +53,7 @@ app.post('/create-checkout-session', async (req, res) => {
       success_url: `http://localhost:3000/success.html?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `http://localhost:3000/cancel.html`,
       metadata: {
-        artwork: artworkName,
+        artwork: cleanArtworkName,
         artist: 'Franz Friedel'
       }
     });
