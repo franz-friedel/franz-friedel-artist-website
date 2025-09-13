@@ -97,43 +97,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Contact Form Handling
-const contactForm = document.getElementById('contactForm');
-
-contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
+// Formspree Contact Form Handling
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('form-status');
     
-    const submitButton = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitButton.textContent;
-    
-    // Show loading state
-    submitButton.innerHTML = '<span class="loading"></span> Sending...';
-    submitButton.disabled = true;
-    
-    // Get form data
-    const formData = new FormData(contactForm);
-    const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        subject: formData.get('subject'),
-        message: formData.get('message')
-    };
-    
-    try {
-        // Simulate form submission (replace with actual endpoint)
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        
-        // Show success message
-        showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-        contactForm.reset();
-        
-    } catch (error) {
-        // Show error message
-        showNotification('Sorry, there was an error sending your message. Please try again.', 'error');
-    } finally {
-        // Reset button
-        submitButton.textContent = originalText;
-        submitButton.disabled = false;
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading status
+            formStatus.className = 'form-status loading';
+            formStatus.textContent = 'Sending message...';
+            
+            // Submit to Formspree
+            const formData = new FormData(contactForm);
+            
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Success
+                    formStatus.className = 'form-status success';
+                    formStatus.textContent = 'Message sent successfully! I\'ll get back to you soon.';
+                    contactForm.reset();
+                    
+                    // Hide status after 5 seconds
+                    setTimeout(() => {
+                        formStatus.style.display = 'none';
+                    }, 5000);
+                } else {
+                    // Error
+                    formStatus.className = 'form-status error';
+                    formStatus.textContent = 'Sorry, there was an error sending your message. Please try again or email me directly at franz-friedel@gmx.de';
+                }
+            })
+            .catch(error => {
+                // Network error
+                formStatus.className = 'form-status error';
+                formStatus.textContent = 'Sorry, there was an error sending your message. Please try again or email me directly at franz-friedel@gmx.de';
+                console.error('Formspree Error:', error);
+            });
+        });
     }
 });
 
