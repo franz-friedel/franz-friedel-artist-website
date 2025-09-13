@@ -24,7 +24,7 @@ async function handlePurchase(artworkName, price, description) {
             },
             body: JSON.stringify({
                 artworkName: artworkName,
-                price: parseFloat(price),
+                price: Math.round(parseFloat(price) * 100), // Convert to cents
                 description: description,
                 imageUrl: imageUrl
             })

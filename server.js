@@ -27,7 +27,7 @@ app.post('/create-checkout-session', async (req, res) => {
             description: description,
             images: [imageUrl],
           },
-          unit_amount: Math.round(price * 100), // Convert to cents
+          unit_amount: price, // Price is already in cents from frontend
         },
         quantity: 1,
       }],
