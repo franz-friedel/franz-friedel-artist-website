@@ -69,19 +69,36 @@ async function handlePurchase(artworkName, price, description) {
 
 // Add click handlers to all purchase buttons
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, looking for purchase buttons...');
     const purchaseButtons = document.querySelectorAll('.purchase-btn');
+    console.log('Found purchase buttons:', purchaseButtons.length);
     
-    purchaseButtons.forEach(button => {
+    purchaseButtons.forEach((button, index) => {
+        console.log(`Setting up button ${index + 1}`);
         button.addEventListener('click', function(event) {
             event.preventDefault();
+            console.log('Purchase button clicked!');
             
             // Get artwork details from the button's parent container
             const artworkContainer = button.closest('.artwork-item, .artwork-details');
-            const artworkName = artworkContainer.querySelector('h1, h3').textContent;
+            console.log('Artwork container:', artworkContainer);
+            
+            if (!artworkContainer) {
+                console.error('Could not find artwork container');
+                alert('Error: Could not find artwork details');
+                return;
+            }
+            
+            const artworkNameElement = artworkContainer.querySelector('h1, h3, h2');
+            const artworkName = artworkNameElement ? artworkNameElement.textContent.trim() : 'Artwork';
+            
             const priceElement = artworkContainer.querySelector('.price, .artwork-price');
-            const price = priceElement ? priceElement.textContent.replace('$', '') : '500';
+            const price = priceElement ? priceElement.textContent.replace('$', '').trim() : '500';
+            
             const descriptionElement = artworkContainer.querySelector('.artwork-description');
-            const description = descriptionElement ? descriptionElement.textContent : 'Contemporary artwork by Franz Friedel';
+            const description = descriptionElement ? descriptionElement.textContent.trim() : 'Contemporary artwork by Franz Friedel';
+            
+            console.log('Artwork details:', { artworkName, price, description });
             
             handlePurchase(artworkName, price, description);
         });
