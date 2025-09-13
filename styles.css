@@ -282,7 +282,7 @@ p {
     background: #000000;
     border-radius: 0;
     transition: transform 0.3s ease;
-    border: 1px solid #333;
+    border: 1px solid #000000;
 }
 
 .highlight:hover {
@@ -320,7 +320,7 @@ p {
     align-items: center;
     justify-content: center;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    border: 1px solid #333;
+    border: 1px solid #000000;
 }
 
 .photo-placeholder {
@@ -356,7 +356,7 @@ p {
     align-items: center;
     background: #000000;
     padding: 2rem;
-    border: 1px solid #333;
+    border: 1px solid #000000;
     transition: all 0.3s ease;
 }
 
@@ -372,7 +372,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #333;
+    border: 1px solid #000000;
 }
 
 .collection-info h3 {
@@ -430,7 +430,7 @@ p {
 
 .filter-btn {
     padding: 10px 25px;
-    border: 2px solid #333;
+    border: 2px solid #000000;
     background: #000000;
     color: #cccccc;
     border-radius: 0;
@@ -458,7 +458,7 @@ p {
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
-    border: 1px solid #333;
+    border: 1px solid #000000;
 }
 
 .artwork-item:hover {
@@ -629,7 +629,7 @@ p {
     border-radius: 0;
     text-decoration: none;
     transition: all 0.3s ease;
-    border: 1px solid #333;
+    border: 1px solid #000000;
 }
 
 .social-link:hover {
@@ -642,7 +642,7 @@ p {
     background: #000000;
     padding: 2rem;
     border-radius: 0;
-    border: 1px solid #333;
+    border: 1px solid #000000;
 }
 
 .form-group {
@@ -653,7 +653,7 @@ p {
 .form-group textarea {
     width: 100%;
     padding: 12px 15px;
-    border: 2px solid #333;
+    border: 2px solid #000000;
     border-radius: 0;
     font-size: 1rem;
     transition: border-color 0.3s ease;
@@ -683,7 +683,7 @@ p {
     background: #000000;
     color: #ffffff;
     padding: 50px 0 20px;
-    border-top: 1px solid #333;
+    border-top: 1px solid #000000;
 }
 
 .footer-content {
@@ -725,7 +725,7 @@ p {
 .footer-bottom {
     text-align: center;
     padding-top: 2rem;
-    border-top: 1px solid #333;
+    border-top: 1px solid #000000;
     color: #cccccc;
 }
 
@@ -746,7 +746,7 @@ p {
         transition: 0.3s;
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.3);
         padding: 2rem 0;
-        border-top: 1px solid #333;
+        border-top: 1px solid #000000;
     }
 
     .nav-menu.active {
@@ -941,7 +941,7 @@ p {
     border-radius: 0;
     font-size: 0.9rem;
     font-weight: 500;
-    border: 1px solid #333;
+    border: 1px solid #000000;
 }
 
 .collection-gallery {
@@ -1008,7 +1008,7 @@ p {
     height: auto;
     max-height: 80vh;
     object-fit: contain;
-    border: 1px solid #333;
+    border: 1px solid #000000;
 }
 
 .artwork-details h1 {
