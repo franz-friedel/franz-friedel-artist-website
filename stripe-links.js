@@ -3,6 +3,7 @@
 
 // Stripe Payment Links - Your actual payment links from Stripe Dashboard
 const paymentLinks = {
+    // Boundaries Collection
     'Boundaries I': 'https://buy.stripe.com/28EbJ3bnoaP96vMdBeaVa00',
     'Boundaries II': 'https://buy.stripe.com/4gMcN7gHI8H11bsgNqaVa01',
     'Boundaries III': 'https://buy.stripe.com/14AaEZfDEbTd5rI8gUaVa02',
@@ -11,15 +12,27 @@ const paymentLinks = {
     'Boundaries VI': 'https://buy.stripe.com/dRm28t1MOe1l5rIdBeaVa05',
     'Boundaries VII': 'https://buy.stripe.com/28E3cxbnog9t5rI1SwaVa06',
     'Boundaries VIII': 'https://buy.stripe.com/fZucN72QS7CX3jA2WAaVa07',
-    'Boundaries IX': 'https://buy.stripe.com/9B6cN7crse1ldYegNqaVa08'
+    'Boundaries IX': 'https://buy.stripe.com/9B6cN7crse1ldYegNqaVa08',
+    
+    // Fractures Collection - TODO: Replace with your actual Stripe Payment Links
+    'Fractures I': 'https://buy.stripe.com/placeholder-fractures-1',
+    'Fractures II': 'https://buy.stripe.com/placeholder-fractures-2',
+    'Fractures III': 'https://buy.stripe.com/placeholder-fractures-3',
+    'Fractures IV': 'https://buy.stripe.com/placeholder-fractures-4',
+    'Fractures V': 'https://buy.stripe.com/placeholder-fractures-5',
+    'Fractures VI': 'https://buy.stripe.com/placeholder-fractures-6'
 };
 
 function handlePaymentLink(artworkName) {
     const paymentLink = paymentLinks[artworkName];
     
-    if (paymentLink) {
+    if (paymentLink && !paymentLink.includes('placeholder')) {
         // Redirect to Stripe Payment Link
         window.open(paymentLink, '_blank');
+    } else if (paymentLink && paymentLink.includes('placeholder')) {
+        // Show message for Fractures artworks that need payment links
+        alert('Payment link for ' + artworkName + ' is being set up. Please contact me directly to purchase this artwork.');
+        window.location.href = '/#contact';
     } else {
         // Fallback: redirect to contact page
         window.location.href = '/#contact';
