@@ -35,19 +35,38 @@ function handlePaymentLink(artworkName) {
     }
 }
 
-// Add click handlers
-document.addEventListener('DOMContentLoaded', function() {
+// Add click handlers - more robust approach
+function attachPurchaseHandlers() {
     const purchaseButtons = document.querySelectorAll('.purchase-btn');
     
     purchaseButtons.forEach(button => {
-        button.addEventListener('click', function(event) {
-            event.preventDefault();
-            
-            const artworkContainer = button.closest('.artwork-item, .artwork-details');
-            const artworkName = artworkContainer.querySelector('h1, h3, h2').textContent.trim();
-            
-            console.log('Opening payment link for:', artworkName);
-            handlePaymentLink(artworkName);
-        });
+        // Remove any existing listeners to prevent duplicates
+        button.removeEventListener('click', handlePurchaseClick);
+        button.addEventListener('click', handlePurchaseClick);
     });
-});
+}
+
+function handlePurchaseClick(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    
+    const artworkContainer = event.target.closest('.artwork-item, .artwork-details');
+    if (!artworkContainer) return;
+    
+    const artworkName = artworkContainer.querySelector('h1, h3, h2');
+    if (!artworkName) return;
+    
+    const name = artworkName.textContent.trim();
+    console.log('Purchase clicked for:', name);
+    handlePaymentLink(name);
+}
+
+// Attach handlers when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachPurchaseHandlers);
+} else {
+    attachPurchaseHandlers();
+}
+
+// Also attach after a short delay to catch dynamically loaded content
+setTimeout(attachPurchaseHandlers, 1000);
