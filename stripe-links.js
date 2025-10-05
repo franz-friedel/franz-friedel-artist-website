@@ -29,12 +29,8 @@ function handlePaymentLink(artworkName) {
     if (paymentLink && !paymentLink.includes('placeholder')) {
         // Redirect to Stripe Payment Link
         window.open(paymentLink, '_blank');
-    } else if (paymentLink && paymentLink.includes('placeholder')) {
-        // Show message for Fractures artworks that need payment links
-        alert('Payment link for ' + artworkName + ' is being set up. Please contact me directly to purchase this artwork.');
-        window.location.href = '/#contact';
     } else {
-        // Fallback: redirect to contact page
+        // For Fractures artworks or any missing payment links, redirect directly to contact
         window.location.href = '/#contact';
     }
 }
