@@ -358,7 +358,7 @@ document.querySelectorAll('.view-btn').forEach(button => {
         const artworkMedium = artworkItem.querySelector('.artwork-medium').textContent;
         const artworkSize = artworkItem.querySelector('.artwork-size').textContent;
         const artworkPrice = artworkItem.querySelector('.artwork-price').textContent;
-        const artworkImage = artworkItem.querySelector('.artwork-image').src;
+        const artworkImage = artworkItem.querySelector('.artwork-image img').src;
         
         showArtworkDetails(artworkTitle, artworkMedium, artworkSize, artworkPrice, artworkImage);
     });
