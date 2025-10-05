@@ -515,7 +515,6 @@ p {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    transform: rotate(-15deg);
 }
 
 /* Disabled purchase button for sold items */
