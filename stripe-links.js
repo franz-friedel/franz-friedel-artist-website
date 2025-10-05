@@ -23,13 +23,18 @@ const paymentLinks = {
     'Fractures VI': 'https://buy.stripe.com/9B600lbnocXh3jA68MaVa0e'
 };
 
-function handlePaymentLink(artworkName) {
+// Make function globally accessible
+window.handlePaymentLink = function(artworkName) {
+    console.log('handlePaymentLink called with:', artworkName);
     const paymentLink = paymentLinks[artworkName];
+    console.log('Payment link found:', paymentLink);
     
     if (paymentLink) {
+        console.log('Opening Stripe link:', paymentLink);
         // Redirect to Stripe Payment Link
         window.open(paymentLink, '_blank');
     } else {
+        console.log('No payment link found, redirecting to contact');
         // Fallback: redirect to contact page
         window.location.href = '/#contact';
     }
@@ -70,3 +75,11 @@ if (document.readyState === 'loading') {
 
 // Also attach after a short delay to catch dynamically loaded content
 setTimeout(attachPurchaseHandlers, 1000);
+
+// Test function to verify everything is working
+window.testPaymentLinks = function() {
+    console.log('Testing payment links:');
+    console.log('Fractures I:', paymentLinks['Fractures I']);
+    console.log('Fractures II:', paymentLinks['Fractures II']);
+    console.log('handlePaymentLink function:', typeof window.handlePaymentLink);
+}
