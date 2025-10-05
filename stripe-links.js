@@ -14,13 +14,13 @@ const paymentLinks = {
     'Boundaries VIII': 'https://buy.stripe.com/fZucN72QS7CX3jA2WAaVa07',
     'Boundaries IX': 'https://buy.stripe.com/9B6cN7crse1ldYegNqaVa08',
     
-    // Fractures Collection - TODO: Replace with your actual Stripe Payment Links
-    'Fractures I': 'https://buy.stripe.com/placeholder-fractures-1',
-    'Fractures II': 'https://buy.stripe.com/placeholder-fractures-2',
-    'Fractures III': 'https://buy.stripe.com/placeholder-fractures-3',
-    'Fractures IV': 'https://buy.stripe.com/placeholder-fractures-4',
-    'Fractures V': 'https://buy.stripe.com/placeholder-fractures-5',
-    'Fractures VI': 'https://buy.stripe.com/placeholder-fractures-6'
+    // Fractures Collection - Real Stripe Payment Links
+    'Fractures I': 'https://buy.stripe.com/6oU9AVcrsf5p4nE0OsaVa09',
+    'Fractures II': 'https://buy.stripe.com/9B64gBbno5uP7zQ1SwaVa0a',
+    'Fractures III': 'https://buy.stripe.com/3cI00lbno0avbQ6ap2aVa0b',
+    'Fractures IV': 'https://buy.stripe.com/6oUdRbajk1ez7zQ54IaVa0c',
+    'Fractures V': 'https://buy.stripe.com/28E4gB1MO7CXg6meFiaVa0d',
+    'Fractures VI': 'https://buy.stripe.com/9B600lbnocXh3jA68MaVa0e'
 };
 
 function handlePaymentLink(artworkName) {
