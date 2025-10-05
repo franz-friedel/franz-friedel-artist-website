@@ -24,17 +24,13 @@ const paymentLinks = {
 };
 
 function handlePaymentLink(artworkName) {
-    console.log('handlePaymentLink called with:', artworkName);
     const paymentLink = paymentLinks[artworkName];
-    console.log('Payment link found:', paymentLink);
     
-    if (paymentLink && !paymentLink.includes('placeholder')) {
-        console.log('Opening Stripe payment link');
+    if (paymentLink) {
         // Redirect to Stripe Payment Link
         window.open(paymentLink, '_blank');
     } else {
-        console.log('Redirecting to contact form');
-        // For Fractures artworks or any missing payment links, redirect directly to contact
+        // Fallback: redirect to contact page
         window.location.href = '/#contact';
     }
 }
