@@ -429,6 +429,55 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
         animation: fadeIn 0.3s ease;
     `;
     
+    // Add modal content styles
+    const modalContentStyle = document.createElement('style');
+    modalContentStyle.textContent = `
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .modal-header h3 {
+            margin: 0;
+            color: #333;
+            font-size: 24px;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-close:hover {
+            color: #333;
+        }
+        .modal-body {
+            color: #333;
+        }
+    `;
+    document.head.appendChild(modalContentStyle);
+    
     // Add to page
     document.body.appendChild(modal);
     
