@@ -495,6 +495,38 @@ p {
     color: #666;
 }
 
+/* SOLD Overlay */
+.sold-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(220, 38, 38, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.sold-text {
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transform: rotate(-15deg);
+}
+
+/* Disabled purchase button for sold items */
+.purchase-btn:disabled {
+    background-color: #666;
+    color: #999;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
 .artwork-placeholder i {
     font-size: 3rem;
     color: #ffffff;
