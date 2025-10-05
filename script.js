@@ -276,7 +276,7 @@ function showPurchaseModal(title, price) {
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.9);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -368,13 +368,14 @@ document.querySelectorAll('.view-btn').forEach(button => {
         const artworkMedium = artworkItem.querySelector('.artwork-medium').textContent;
         const artworkSize = artworkItem.querySelector('.artwork-size').textContent;
         const artworkPrice = artworkItem.querySelector('.artwork-price').textContent;
+        const artworkImage = artworkItem.querySelector('.artwork-image').src;
         
-        showArtworkDetails(artworkTitle, artworkMedium, artworkSize, artworkPrice);
+        showArtworkDetails(artworkTitle, artworkMedium, artworkSize, artworkPrice, artworkImage);
     });
 });
 
 // Artwork Details Modal
-function showArtworkDetails(title, medium, size, price) {
+function showArtworkDetails(title, medium, size, price, imageUrl) {
     // Remove existing modal
     const existingModal = document.querySelector('.details-modal');
     if (existingModal) {
@@ -393,10 +394,7 @@ function showArtworkDetails(title, medium, size, price) {
                 </div>
                 <div class="modal-body">
                     <div class="artwork-details-image">
-                        <div class="artwork-placeholder">
-                            <i class="fas fa-palette"></i>
-                            <p>Artwork Image</p>
-                        </div>
+                        <img src="${imageUrl}" alt="${title}" class="modal-artwork-image">
                     </div>
                     <div class="artwork-details-info">
                         <p><strong>Medium:</strong> ${medium}</p>
@@ -423,7 +421,7 @@ function showArtworkDetails(title, medium, size, price) {
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.9);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -462,13 +460,20 @@ const detailsModalStyle = document.createElement('style');
 detailsModalStyle.textContent = `
     .artwork-details-image {
         width: 100%;
-        height: 300px;
+        height: 400px;
         background: #f0f0f0;
         border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
         margin-bottom: 20px;
+        overflow: hidden;
+    }
+    .modal-artwork-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 10px;
     }
     .artwork-details-info p {
         margin-bottom: 10px;
