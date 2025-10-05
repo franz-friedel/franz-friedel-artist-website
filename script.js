@@ -226,18 +226,8 @@ notificationStyle.textContent = `
 `;
 document.head.appendChild(notificationStyle);
 
-// Purchase button functionality
-document.querySelectorAll('.purchase-btn').forEach(button => {
-    button.addEventListener('click', (e) => {
-        e.preventDefault();
-        const artworkItem = button.closest('.artwork-item');
-        const artworkTitle = artworkItem.querySelector('h3').textContent;
-        const artworkPrice = artworkItem.querySelector('.artwork-price').textContent;
-        
-        // Show purchase modal or redirect to purchase page
-        showPurchaseModal(artworkTitle, artworkPrice);
-    });
-});
+// Purchase button functionality is now handled by stripe-links.js
+// This prevents conflicts with Stripe Payment Links
 
 // Purchase Modal
 function showPurchaseModal(title, price) {
