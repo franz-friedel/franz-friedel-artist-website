@@ -372,9 +372,22 @@ document.querySelectorAll('.view-btn').forEach(button => {
         // Debug: log the image path
         console.log('Image path:', artworkImage);
         
-        // Force a test image for debugging - use a known working image
-        artworkImage = 'images/fragments-1.jpg';
-        console.log('Forcing image to:', artworkImage);
+        // Simple: just use the correct image for each artwork
+        if (artworkTitle.includes('Fragments I')) {
+            artworkImage = 'images/fragments-1.jpg';
+        } else if (artworkTitle.includes('Fragments II')) {
+            artworkImage = 'images/fragments-2.jpg';
+        } else if (artworkTitle.includes('Fragments III')) {
+            artworkImage = 'images/fragments-3.jpg';
+        } else if (artworkTitle.includes('Fragments IV')) {
+            artworkImage = 'images/fragments-4.jpg';
+        } else if (artworkTitle.includes('Fragments V')) {
+            artworkImage = 'images/fragments-5.jpg';
+        } else if (artworkTitle.includes('Fragments VI')) {
+            artworkImage = 'images/fragments-6.jpg';
+        } else {
+            artworkImage = 'images/fragments-1.jpg'; // fallback
+        }
         
         showArtworkDetails(artworkTitle, artworkMedium, artworkSize, artworkPrice, artworkImage);
     });
@@ -549,36 +562,14 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
     // Add to page
     document.body.appendChild(modal);
     
-    // Test: log the image element
-    const testImg = modal.querySelector('img');
-    console.log('Modal image element:', testImg);
-    console.log('Modal image src:', testImg ? testImg.src : 'NOT FOUND');
-    
-    // Force create a new image element
+    // Simple: just make sure the image shows
     const imageContainer = modal.querySelector('.artwork-details-image');
     if (imageContainer) {
-        // Remove existing image
-        const existingImg = imageContainer.querySelector('img');
-        if (existingImg) {
-            existingImg.remove();
+        const img = imageContainer.querySelector('img');
+        if (img) {
+            img.src = imageUrl;
+            img.style.display = 'block';
         }
-        
-        // Create new image
-        const newImg = document.createElement('img');
-        newImg.src = imageUrl;
-        newImg.alt = title;
-        newImg.style.width = '100%';
-        newImg.style.height = '100%';
-        newImg.style.objectFit = 'cover';
-        newImg.style.borderRadius = '10px';
-        newImg.style.display = 'block';
-        newImg.onerror = function() {
-            console.log('Image failed to load:', this.src);
-            this.style.display = 'none';
-        };
-        
-        imageContainer.appendChild(newImg);
-        console.log('Created new image with src:', newImg.src);
     }
     
     // Force apply styles directly to the modal content
