@@ -391,7 +391,7 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
     modal.className = 'details-modal';
     modal.innerHTML = `
         <div class="modal-overlay">
-            <div class="modal-content">
+            <div class="modal-content details-modal-content">
                 <div class="modal-header">
                     <h3>${title}</h3>
                     <button class="modal-close">&times;</button>
@@ -449,8 +449,8 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
     // Add modal content styles
     const modalContentStyle = document.createElement('style');
     modalContentStyle.textContent = `
-        .modal-content {
-            background: #000000;
+        .details-modal-content {
+            background: #000000 !important;
             border-radius: 15px;
             padding: 30px;
             max-width: 800px;
@@ -460,12 +460,12 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             position: relative;
         }
-        .modal-header {
+        .details-modal-content .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #333;
             padding-bottom: 15px;
         }
         .modal-header h3 {
