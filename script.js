@@ -369,6 +369,14 @@ document.querySelectorAll('.view-btn').forEach(button => {
             artworkImage = `images/${title}.jpg`;
         }
         
+        // Debug: log the image path
+        console.log('Image path:', artworkImage);
+        
+        // Force a test image for debugging
+        if (!artworkImage || artworkImage === '') {
+            artworkImage = 'images/fragments-1.jpg';
+        }
+        
         showArtworkDetails(artworkTitle, artworkMedium, artworkSize, artworkPrice, artworkImage);
     });
 });
@@ -409,7 +417,7 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
                 </div>
                         <div class="modal-body">
                             <div class="artwork-details-image" style="flex: 1; height: 500px; background: #000; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                                <img src="${imageUrl}" alt="${title}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px; display: block;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <img src="${imageUrl}" alt="${title}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px; display: block;" onerror="console.log('Image failed to load:', this.src); this.style.display='none'; this.nextElementSibling.style.display='flex';">
                                 <div class="artwork-placeholder" style="display: none; background: #333; color: white; align-items: center; justify-content: center; height: 100%; width: 100%;">
                                     <i class="fas fa-paint-brush" style="font-size: 3rem;"></i>
                                 </div>
