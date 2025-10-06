@@ -304,7 +304,7 @@ function showPurchaseModal(title, price) {
             cursor: pointer;
             color: #999;
         }
-        .modal-body {
+        .purchase-modal .modal-body {
             padding: 20px;
         }
         .modal-actions {
@@ -489,7 +489,7 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
         .modal-close:hover {
             color: #333;
         }
-        .modal-body {
+        .details-modal .modal-body {
             color: #333;
             display: flex;
             gap: 30px;
@@ -517,7 +517,7 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
             color: #555;
         }
         @media (max-width: 768px) {
-            .modal-body {
+            .details-modal .modal-body {
                 flex-direction: column;
                 gap: 20px;
             }
