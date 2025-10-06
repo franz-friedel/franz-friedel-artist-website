@@ -428,8 +428,8 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
                     <button class="modal-close">&times;</button>
                 </div>
                         <div class="modal-body">
-                            <div class="artwork-details-image" style="flex: 1; height: 500px; background: #000; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                                <!-- Image will be inserted here by JavaScript -->
+                            <div class="artwork-details-image">
+                                <img src="${imageUrl}" alt="${title}" class="modal-artwork-image">
                             </div>
                     <div class="artwork-details-info">
                         <div class="artwork-details-section">
@@ -559,34 +559,11 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
     // Add to page
     document.body.appendChild(modal);
     
-    // Force the image to show - create a new one if needed
-    const imageContainer = modal.querySelector('.artwork-details-image');
-    if (imageContainer) {
-        // Clear the container
-        imageContainer.innerHTML = '';
-        
-        // Create a new image element
-        const img = document.createElement('img');
+    // Simple: just make sure the image shows
+    const img = modal.querySelector('.modal-artwork-image');
+    if (img) {
         img.src = imageUrl;
         img.alt = title;
-        img.style.width = '100%';
-        img.style.height = '100%';
-        img.style.objectFit = 'cover';
-        img.style.borderRadius = '10px';
-        img.style.display = 'block';
-        
-        // Add error handling
-        img.onload = function() {
-            console.log('Image loaded successfully:', imageUrl);
-        };
-        img.onerror = function() {
-            console.log('Image failed to load:', imageUrl);
-            // Show a placeholder
-            imageContainer.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; height: 100%; color: white; font-size: 1.5rem;">Image not found</div>';
-        };
-        
-        imageContainer.appendChild(img);
-        console.log('Created image with src:', imageUrl);
     }
     
     // Force apply styles directly to the modal content
@@ -644,22 +621,23 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
 // Add artwork details modal styles
 const detailsModalStyle = document.createElement('style');
 detailsModalStyle.textContent = `
-    .artwork-details-image {
-        flex: 1;
-        height: 500px;
-        background: #000000;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-    }
-    .modal-artwork-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 10px;
-    }
+        .artwork-details-image {
+            flex: 1;
+            height: 500px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-right: 20px;
+        }
+        .modal-artwork-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
     .artwork-details-info p {
         margin-bottom: 10px;
     }
