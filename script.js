@@ -361,6 +361,9 @@ document.querySelectorAll('.view-btn').forEach(button => {
         const artworkImageElement = artworkItem.querySelector('.artwork-image img') || artworkItem.querySelector('.artwork-image');
         const artworkImage = artworkImageElement ? artworkImageElement.src : '';
         
+        console.log('Artwork Image Element:', artworkImageElement);
+        console.log('Artwork Image Source:', artworkImage);
+        
         showArtworkDetails(artworkTitle, artworkMedium, artworkSize, artworkPrice, artworkImage);
     });
 });
@@ -381,6 +384,8 @@ function getArtworkDescription(title) {
 
 // Artwork Details Modal
 function showArtworkDetails(title, medium, size, price, imageUrl) {
+    console.log('showArtworkDetails called with:', { title, medium, size, price, imageUrl });
+    
     // Remove existing modal
     const existingModal = document.querySelector('.details-modal');
     if (existingModal) {
@@ -555,11 +560,15 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
     
     const modalArtworkImage = modal.querySelector('.modal-artwork-image');
     if (modalArtworkImage) {
+        console.log('Modal artwork image found:', modalArtworkImage);
+        console.log('Image src:', modalArtworkImage.src);
         modalArtworkImage.style.width = '100%';
         modalArtworkImage.style.height = '100%';
         modalArtworkImage.style.objectFit = 'cover';
         modalArtworkImage.style.borderRadius = '10px';
         modalArtworkImage.style.display = 'block';
+    } else {
+        console.log('Modal artwork image NOT found!');
     }
     
     // Force apply styles to all text elements
