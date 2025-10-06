@@ -389,6 +389,8 @@ document.querySelectorAll('.view-btn').forEach(button => {
             artworkImage = 'images/fragments-1.jpg'; // fallback
         }
         
+        console.log('Final image path:', artworkImage);
+        
         showArtworkDetails(artworkTitle, artworkMedium, artworkSize, artworkPrice, artworkImage);
     });
 });
@@ -562,8 +564,19 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
     // Simple: just make sure the image shows
     const img = modal.querySelector('.modal-artwork-image');
     if (img) {
+        console.log('Setting image src to:', imageUrl);
         img.src = imageUrl;
         img.alt = title;
+        
+        // Force reload
+        img.onload = function() {
+            console.log('Image loaded successfully!');
+        };
+        img.onerror = function() {
+            console.log('Image failed to load:', imageUrl);
+        };
+    } else {
+        console.log('Image element not found!');
     }
     
     // Force apply styles directly to the modal content
