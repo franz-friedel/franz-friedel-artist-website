@@ -15,12 +15,12 @@ const paymentLinks = {
     'Boundaries IX': 'https://buy.stripe.com/9B6cN7crse1ldYegNqaVa08',
     
     // Fractures Collection - Real Stripe Payment Links
-    'Fractures I': 'https://buy.stripe.com/6oU9AVcrsf5p4nE0OsaVa09',
-    'Fractures II': 'https://buy.stripe.com/9B64gBbno5uP7zQ1SwaVa0a',
-    'Fractures III': 'https://buy.stripe.com/3cI00lbno0avbQ6ap2aVa0b',
-    'Fractures IV': 'https://buy.stripe.com/6oUdRbajk1ez7zQ54IaVa0c',
-    'Fractures V': 'https://buy.stripe.com/28E4gB1MO7CXg6meFiaVa0d',
-    'Fractures VI': 'https://buy.stripe.com/9B600lbnocXh3jA68MaVa0e'
+    'Fragments I': 'https://buy.stripe.com/6oU9AVcrsf5p4nE0OsaVa09',
+    'Fragments II': 'https://buy.stripe.com/9B64gBbno5uP7zQ1SwaVa0a',
+    'Fragments III': 'https://buy.stripe.com/3cI00lbno0avbQ6ap2aVa0b',
+    'Fragments IV': 'https://buy.stripe.com/6oUdRbajk1ez7zQ54IaVa0c',
+    'Fragments V': 'https://buy.stripe.com/28E4gB1MO7CXg6meFiaVa0d',
+    'Fragments VI': 'https://buy.stripe.com/9B600lbnocXh3jA68MaVa0e'
 };
 
 // Make function globally accessible
@@ -79,7 +79,7 @@ setTimeout(attachPurchaseHandlers, 1000);
 // Test function to verify everything is working
 window.testPaymentLinks = function() {
     console.log('Testing payment links:');
-    console.log('Fractures I:', paymentLinks['Fractures I']);
-    console.log('Fractures II:', paymentLinks['Fractures II']);
+    console.log('Fragments I:', paymentLinks['Fragments I']);
+    console.log('Fragments II:', paymentLinks['Fragments II']);
     console.log('handlePaymentLink function:', typeof window.handlePaymentLink);
 }
