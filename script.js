@@ -429,10 +429,7 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
                 </div>
                         <div class="modal-body">
                             <div class="artwork-details-image" style="flex: 1; height: 500px; background: #000; border-radius: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                                <img src="${imageUrl}" alt="${title}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px; display: block;" onerror="console.log('Image failed to load:', this.src); this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                                <div class="artwork-placeholder" style="display: none; background: #333; color: white; align-items: center; justify-content: center; height: 100%; width: 100%;">
-                                    <i class="fas fa-paint-brush" style="font-size: 3rem;"></i>
-                                </div>
+                                <!-- Image will be inserted here by JavaScript -->
                             </div>
                     <div class="artwork-details-info">
                         <div class="artwork-details-section">
@@ -562,14 +559,34 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
     // Add to page
     document.body.appendChild(modal);
     
-    // Simple: just make sure the image shows
+    // Force the image to show - create a new one if needed
     const imageContainer = modal.querySelector('.artwork-details-image');
     if (imageContainer) {
-        const img = imageContainer.querySelector('img');
-        if (img) {
-            img.src = imageUrl;
-            img.style.display = 'block';
-        }
+        // Clear the container
+        imageContainer.innerHTML = '';
+        
+        // Create a new image element
+        const img = document.createElement('img');
+        img.src = imageUrl;
+        img.alt = title;
+        img.style.width = '100%';
+        img.style.height = '100%';
+        img.style.objectFit = 'cover';
+        img.style.borderRadius = '10px';
+        img.style.display = 'block';
+        
+        // Add error handling
+        img.onload = function() {
+            console.log('Image loaded successfully:', imageUrl);
+        };
+        img.onerror = function() {
+            console.log('Image failed to load:', imageUrl);
+            // Show a placeholder
+            imageContainer.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; height: 100%; color: white; font-size: 1.5rem;">Image not found</div>';
+        };
+        
+        imageContainer.appendChild(img);
+        console.log('Created image with src:', imageUrl);
     }
     
     // Force apply styles directly to the modal content
