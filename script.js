@@ -364,6 +364,20 @@ document.querySelectorAll('.view-btn').forEach(button => {
     });
 });
 
+// Get artwork description based on title
+function getArtworkDescription(title) {
+    const descriptions = {
+        'Fragments I': 'Intersecting lines reach for completion but remain untethered, suggesting a rhythm of connection and loss. The composition captures a moment between cohesion and collapse, where form breathes through absence.',
+        'Fragments II': 'Raw-edged rectangles converge and diverge, hinting at structural tension; its crisp pigment and taut alignment anchor the collection\'s opening statement.',
+        'Fragments III': 'A quiet tension runs through the open geometry; lines reach for connection but stop short, leaving silence in between. The work captures a fleeting equilibrium between order and incompletion, where space itself becomes part of the composition.',
+        'Fragments IV': 'Lines drift apart with calm detachment, each color retaining its individuality while hinting at a once-shared structure. The composition evokes a quiet aftermath; a stillness that follows separation.',
+        'Fragments V': 'Intersecting strokes form a loose architecture that feels both deliberate and undone. The composition balances tension and openness, suggesting the moment structure begins to dissolve into motion.',
+        'Fragments VI': 'The composition drifts between order and emptiness, its open corners leaving room for air and uncertainty. Each stroke reaches outward, as if searching for connection after the grid has come undone.'
+    };
+    
+    return descriptions[title] || 'This is a unique piece that showcases the artist\'s distinctive style and creative vision. Each artwork is carefully crafted to evoke emotion and inspire contemplation.';
+}
+
 // Artwork Details Modal
 function showArtworkDetails(title, medium, size, price, imageUrl) {
     // Remove existing modal
@@ -387,13 +401,26 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
                         <img src="${imageUrl}" alt="${title}" class="modal-artwork-image">
                     </div>
                     <div class="artwork-details-info">
-                        <p><strong>Medium:</strong> ${medium}</p>
-                        <p><strong>Size:</strong> ${size}</p>
-                        <p><strong>Price:</strong> ${price}</p>
-                        <p class="artwork-description">
-                            This is a unique piece that showcases the artist's distinctive style and creative vision. 
-                            Each artwork is carefully crafted to evoke emotion and inspire contemplation.
-                        </p>
+                        <div class="artwork-details-section">
+                            <h4>Materials:</h4>
+                            <p>Acrylic on Canvas</p>
+                        </div>
+                        <div class="artwork-details-section">
+                            <h4>Rarity:</h4>
+                            <p>Unique work</p>
+                        </div>
+                        <div class="artwork-details-section">
+                            <h4>Dimensions:</h4>
+                            <p>${size}</p>
+                        </div>
+                        <div class="artwork-details-section">
+                            <h4>Location:</h4>
+                            <p>Stockholm, Sweden</p>
+                        </div>
+                        <div class="artwork-details-section">
+                            <h4>Description:</h4>
+                            <p class="artwork-description">${getArtworkDescription(title)}</p>
+                        </div>
                         <div class="modal-actions">
                             <button class="btn btn-primary purchase-btn">Purchase</button>
                             <button class="btn btn-secondary modal-close">Close</button>
@@ -464,6 +491,36 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
         }
         .modal-body {
             color: #333;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .artwork-details-section {
+            margin-bottom: 20px;
+        }
+        .artwork-details-section h4 {
+            margin: 0 0 5px 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .artwork-details-section p {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+            line-height: 1.5;
+        }
+        .artwork-description {
+            font-style: italic;
+            color: #555;
+        }
+        @media (max-width: 768px) {
+            .modal-body {
+                flex-direction: column;
+                gap: 20px;
+            }
         }
     `;
     document.head.appendChild(modalContentStyle);
