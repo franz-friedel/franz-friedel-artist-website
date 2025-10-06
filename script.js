@@ -358,7 +358,8 @@ document.querySelectorAll('.view-btn').forEach(button => {
         const artworkMedium = artworkItem.querySelector('.artwork-medium').textContent;
         const artworkSize = artworkItem.querySelector('.artwork-size').textContent;
         const artworkPrice = artworkItem.querySelector('.artwork-price').textContent;
-        const artworkImage = artworkItem.querySelector('.artwork-image img').src;
+        const artworkImageElement = artworkItem.querySelector('.artwork-image img') || artworkItem.querySelector('.artwork-image');
+        const artworkImage = artworkImageElement ? artworkImageElement.src : '';
         
         showArtworkDetails(artworkTitle, artworkMedium, artworkSize, artworkPrice, artworkImage);
     });
@@ -396,10 +397,13 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
                     <h3>${title}</h3>
                     <button class="modal-close">&times;</button>
                 </div>
-                <div class="modal-body">
-                    <div class="artwork-details-image">
-                        <img src="${imageUrl}" alt="${title}" class="modal-artwork-image">
-                    </div>
+                        <div class="modal-body">
+                            <div class="artwork-details-image">
+                                <img src="${imageUrl}" alt="${title}" class="modal-artwork-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="artwork-placeholder" style="display: none; background: #333; color: white; align-items: center; justify-content: center; height: 100%;">
+                                    <i class="fas fa-paint-brush" style="font-size: 3rem;"></i>
+                                </div>
+                            </div>
                     <div class="artwork-details-info">
                         <div class="artwork-details-section">
                             <h4>Materials:</h4>
@@ -534,6 +538,28 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
         modalContent.style.background = '#000000';
         modalContent.style.color = '#ffffff';
         modalContent.style.maxWidth = '800px';
+    }
+    
+    // Force apply styles to the artwork image
+    const artworkImage = modal.querySelector('.artwork-details-image');
+    if (artworkImage) {
+        artworkImage.style.flex = '1';
+        artworkImage.style.height = '500px';
+        artworkImage.style.background = '#000000';
+        artworkImage.style.borderRadius = '10px';
+        artworkImage.style.display = 'flex';
+        artworkImage.style.alignItems = 'center';
+        artworkImage.style.justifyContent = 'center';
+        artworkImage.style.overflow = 'hidden';
+    }
+    
+    const modalArtworkImage = modal.querySelector('.modal-artwork-image');
+    if (modalArtworkImage) {
+        modalArtworkImage.style.width = '100%';
+        modalArtworkImage.style.height = '100%';
+        modalArtworkImage.style.objectFit = 'cover';
+        modalArtworkImage.style.borderRadius = '10px';
+        modalArtworkImage.style.display = 'block';
     }
     
     // Force apply styles to all text elements
