@@ -450,10 +450,10 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
     const modalContentStyle = document.createElement('style');
     modalContentStyle.textContent = `
         .modal-content {
-            background: white;
+            background: #000000;
             border-radius: 15px;
             padding: 30px;
-            max-width: 600px;
+            max-width: 800px;
             width: 90%;
             max-height: 80vh;
             overflow-y: auto;
@@ -470,7 +470,7 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
         }
         .modal-header h3 {
             margin: 0;
-            color: #333;
+            color: #ffffff;
             font-size: 24px;
         }
         .modal-close {
@@ -478,7 +478,7 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
             border: none;
             font-size: 24px;
             cursor: pointer;
-            color: #666;
+            color: #ffffff;
             padding: 0;
             width: 30px;
             height: 30px;
@@ -487,10 +487,10 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
             justify-content: center;
         }
         .modal-close:hover {
-            color: #333;
+            color: #cccccc;
         }
         .details-modal .modal-body {
-            color: #333;
+            color: #ffffff;
             display: flex;
             gap: 30px;
             align-items: flex-start;
@@ -502,19 +502,19 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
             margin: 0 0 5px 0;
             font-size: 14px;
             font-weight: 600;
-            color: #666;
+            color: #cccccc;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         .artwork-details-section p {
             margin: 0;
             font-size: 16px;
-            color: #333;
+            color: #ffffff;
             line-height: 1.5;
         }
         .artwork-description {
             font-style: italic;
-            color: #555;
+            color: #cccccc;
         }
         @media (max-width: 768px) {
             .details-modal .modal-body {
@@ -555,20 +555,19 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
 const detailsModalStyle = document.createElement('style');
 detailsModalStyle.textContent = `
     .artwork-details-image {
-        width: 100%;
-        height: 400px;
-        background: #f0f0f0;
+        flex: 1;
+        height: 500px;
+        background: #000000;
         border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 20px;
         overflow: hidden;
     }
     .modal-artwork-image {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
         border-radius: 10px;
     }
     .artwork-details-info p {
