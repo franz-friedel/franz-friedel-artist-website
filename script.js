@@ -528,6 +528,35 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
     // Add to page
     document.body.appendChild(modal);
     
+    // Force apply styles directly to the modal content
+    const modalContent = modal.querySelector('.modal-content');
+    if (modalContent) {
+        modalContent.style.background = '#000000';
+        modalContent.style.color = '#ffffff';
+        modalContent.style.maxWidth = '800px';
+    }
+    
+    // Force apply styles to all text elements
+    const textElements = modal.querySelectorAll('h3, h4, p, .modal-close');
+    textElements.forEach(el => {
+        if (el.classList.contains('modal-close')) {
+            el.style.color = '#ffffff';
+        } else {
+            el.style.color = '#ffffff';
+        }
+    });
+    
+    // Force apply styles to artwork details sections
+    const detailSections = modal.querySelectorAll('.artwork-details-section h4');
+    detailSections.forEach(el => {
+        el.style.color = '#cccccc';
+    });
+    
+    const detailTexts = modal.querySelectorAll('.artwork-details-section p');
+    detailTexts.forEach(el => {
+        el.style.color = '#ffffff';
+    });
+    
     // Close modal functionality
     modal.querySelectorAll('.modal-close').forEach(closeBtn => {
         closeBtn.addEventListener('click', () => {
