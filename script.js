@@ -372,21 +372,21 @@ document.querySelectorAll('.view-btn').forEach(button => {
         // Debug: log the image path
         console.log('Image path:', artworkImage);
         
-        // Simple: just use the correct image for each artwork
+        // Use compressed images for better loading performance
         if (artworkTitle.includes('Fragments I')) {
-            artworkImage = 'images/fragments-1.jpg';
+            artworkImage = 'images/fragments-1-resized.jpg';
         } else if (artworkTitle.includes('Fragments II')) {
-            artworkImage = 'images/fragments-2.jpg';
+            artworkImage = 'images/fragments-2-resized.jpg';
         } else if (artworkTitle.includes('Fragments III')) {
-            artworkImage = 'images/fragments-3.jpg';
+            artworkImage = 'images/fragments-3-resized.jpg';
         } else if (artworkTitle.includes('Fragments IV')) {
-            artworkImage = 'images/fragments-4.jpg';
+            artworkImage = 'images/fragments-4-resized.jpg';
         } else if (artworkTitle.includes('Fragments V')) {
-            artworkImage = 'images/fragments-5.jpg';
+            artworkImage = 'images/fragments-5-resized.jpg';
         } else if (artworkTitle.includes('Fragments VI')) {
-            artworkImage = 'images/fragments-6.jpg';
+            artworkImage = 'images/fragments-6-resized.jpg';
         } else {
-            artworkImage = 'images/fragments-1.jpg'; // fallback
+            artworkImage = 'images/fragments-1-resized.jpg'; // fallback
         }
         
         console.log('Final image path:', artworkImage);
@@ -768,3 +768,33 @@ const debouncedScrollHandler = debounce(() => {
 }, 10);
 
 window.addEventListener('scroll', debouncedScrollHandler);
+
+const modal = document.getElementById("artworkModal");
+const modalImg = document.getElementById("modalImage");
+const modalTitle = document.getElementById("modalTitle");
+const modalMedium = document.getElementById("modalMedium");
+const modalSize = document.getElementById("modalSize");
+const modalPrice = document.getElementById("modalPrice");
+
+document.querySelectorAll(".view-btn").forEach(btn => {
+  btn.addEventListener("click", e => {
+    e.preventDefault();
+
+    const artwork = btn.closest(".artwork-item");
+    modalImg.src = artwork.querySelector("img").src;
+    modalTitle.textContent = artwork.querySelector("h3").textContent;
+    modalMedium.textContent = artwork.querySelector(".artwork-medium").textContent;
+    modalSize.textContent = artwork.querySelector(".artwork-size").textContent;
+    modalPrice.textContent = artwork.querySelector(".artwork-price").textContent;
+
+    modal.classList.add("active");
+  });
+});
+
+document.querySelector(".modal-close").addEventListener("click", () => {
+  modal.classList.remove("active");
+});
+
+window.addEventListener("click", e => {
+  if (e.target === modal) modal.classList.remove("active");
+});
