@@ -267,6 +267,23 @@
         </div>
     </footer>
 
+        <!-- Artwork Modal (add this block) -->
+    <div id="artworkModal" class="modal" aria-hidden="true">
+        <div class="modal-dialog" role="dialog" aria-modal="true">
+        <div class="modal-left">
+            <img id="modalImage" src="" alt="" />
+        </div>
+        <div class="modal-right">
+            <button type="button" class="modal-close" data-close-modal>&times;</button>
+            <h2 id="modalTitle"></h2>
+            <p><strong>Materials:</strong> <span id="modalMedium"></span></p>
+            <p><strong>Dimensions:</strong> <span id="modalSize"></span></p>
+            <p><strong>Price:</strong> <span id="modalPrice"></span></p>
+            <button class="purchase-btn">Purchase</button>
+        </div>
+        </div>
+    </div>
+
     <script src="https://js.stripe.com/v3/"></script>
     <script src="stripe-payment.js"></script>
     <script src="script.js"></script>
