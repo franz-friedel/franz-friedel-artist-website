@@ -384,7 +384,7 @@ document.querySelectorAll('.view-btn').forEach(button => {
         } else if (artworkTitle.includes('Fragments V')) {
             artworkImage = 'images/fragments-5.jpg';
         } else if (artworkTitle.includes('Fragments VI')) {
-            artworkImage = 'images/fragments-6.jpg';
+            artworkImage = 'images/fragments-6-compressed.jpg';
         } else {
             artworkImage = 'images/fragments-1.jpg'; // fallback
         }
