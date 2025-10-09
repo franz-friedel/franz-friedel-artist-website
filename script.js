@@ -372,21 +372,21 @@ document.querySelectorAll('.view-btn').forEach(button => {
         // Debug: log the image path
         console.log('Image path:', artworkImage);
         
-        // Use original images for modal display (they're already loaded in the grid)
+        // Use compressed images for modal display (faster loading)
         if (artworkTitle.includes('Fragments I')) {
-            artworkImage = 'images/fragments-1.jpg';
+            artworkImage = 'images/fragments-1-compressed.jpg';
         } else if (artworkTitle.includes('Fragments II')) {
-            artworkImage = 'images/fragments-2.jpg';
+            artworkImage = 'images/fragments-2-compressed.jpg';
         } else if (artworkTitle.includes('Fragments III')) {
-            artworkImage = 'images/fragments-3.jpg';
+            artworkImage = 'images/fragments-3-compressed.jpg';
         } else if (artworkTitle.includes('Fragments IV')) {
-            artworkImage = 'images/fragments-4.jpg';
+            artworkImage = 'images/fragments-4-compressed.jpg';
         } else if (artworkTitle.includes('Fragments V')) {
-            artworkImage = 'images/fragments-5.jpg';
+            artworkImage = 'images/fragments-5-compressed.jpg';
         } else if (artworkTitle.includes('Fragments VI')) {
             artworkImage = 'images/fragments-6-compressed.jpg';
         } else {
-            artworkImage = 'images/fragments-1.jpg'; // fallback
+            artworkImage = 'images/fragments-1-compressed.jpg'; // fallback
         }
         
         console.log('Final image path:', artworkImage);
