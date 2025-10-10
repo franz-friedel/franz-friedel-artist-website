@@ -431,7 +431,13 @@ function showArtworkDetails(title, medium, size, price, imageUrl) {
                 </div>
                         <div class="modal-body">
                             <div class="artwork-details-image">
-                                <img src="${imageUrl}" alt="${title}" class="modal-artwork-image">
+                                <img src="${imageUrl}" alt="${title}" class="modal-artwork-image" 
+                                     onload="console.log('Image loaded successfully:', '${imageUrl}')" 
+                                     onerror="console.error('Image failed to load:', '${imageUrl}'); this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div style="display: none; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: #666;">
+                                    <i class="fas fa-image" style="font-size: 48px; margin-bottom: 10px;"></i>
+                                    <p>Image loading...</p>
+                                </div>
                             </div>
                     <div class="artwork-details-info">
                         <div class="artwork-details-section">
