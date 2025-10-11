@@ -871,6 +871,7 @@ const artworkData = {
 
 // Function to open artwork modal - make globally accessible
 window.openArtworkModal = function(artworkTitle) {
+    console.log('openArtworkModal called with:', artworkTitle);
     const artwork = artworkData[artworkTitle];
     if (!artwork) {
         console.error('Artwork not found:', artworkTitle);
