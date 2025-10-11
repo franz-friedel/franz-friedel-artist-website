@@ -829,42 +829,42 @@ const artworkData = {
         image: 'images/traces-1.jpg',
         medium: 'Acrylic on Canvas',
         size: '21cm × 15cm',
-        price: '$450',
+        price: '€400',
         description: 'A sparse dialogue between color and emptiness. The marks hover with restraint, evoking the first breath after release; the threshold between control and surrender.'
     },
     'Traces II': {
         image: 'images/traces-2.jpg',
         medium: 'Acrylic on Canvas',
         size: '21cm × 15cm',
-        price: '$450',
+        price: '€400',
         description: 'Lines stretch outward and lose their symmetry. The work feels like an echo of structure, where geometry turns into gesture and order begins to dissolve.'
     },
     'Traces III': {
         image: 'images/traces-3.jpg',
         medium: 'Acrylic on Canvas',
         size: '21cm × 15cm',
-        price: '$450',
+        price: '€400',
         description: 'Balanced yet untethered, this composition suggests rhythm through absence. It carries the poise of something once deliberate, now left to drift.'
     },
     'Traces IV': {
         image: 'images/traces-4.jpg',
         medium: 'Acrylic on Canvas',
         size: '21cm × 15cm',
-        price: '$450',
+        price: '€400',
         description: 'Vertical and horizontal gestures meet in quiet intervals, suggesting both alignment and drift. The composition holds tension between rhythm and pause, presence and what remains unsaid.'
     },
     'Traces V': {
         image: 'images/traces-5.jpg',
         medium: 'Acrylic on Canvas',
         size: '21cm × 15cm',
-        price: '$450',
+        price: '€400',
         description: 'Light and space dominate. The few remaining gestures feel like afterimages, faintly recalling the density of earlier compositions.'
     },
     'Traces VI': {
         image: 'images/traces-6.jpg',
         medium: 'Acrylic on Canvas',
         size: '21cm × 15cm',
-        price: '$450',
+        price: '€400',
         description: 'The final piece closes the cycle in near-silence. Minimal, vertical strokes speak of continuity; the persistence of gesture even as form disappears.'
     }
 };
