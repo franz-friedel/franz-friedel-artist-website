@@ -350,7 +350,13 @@ fadeOutStyle.textContent = `
 document.head.appendChild(fadeOutStyle);
 
 // View Details functionality
+// Only attach listeners to view buttons that don't have inline onclick handlers
 document.querySelectorAll('.view-btn').forEach(button => {
+    // Skip if button already has an onclick attribute (used by fragments.html)
+    if (button.hasAttribute('onclick')) {
+        return;
+    }
+    
     button.addEventListener('click', (e) => {
         e.preventDefault();
         const artworkItem = button.closest('.artwork-item');
@@ -775,32 +781,193 @@ const debouncedScrollHandler = debounce(() => {
 
 window.addEventListener('scroll', debouncedScrollHandler);
 
-const modal = document.getElementById("artworkModal");
-const modalImg = document.getElementById("modalImage");
-const modalTitle = document.getElementById("modalTitle");
-const modalMedium = document.getElementById("modalMedium");
-const modalSize = document.getElementById("modalSize");
-const modalPrice = document.getElementById("modalPrice");
+// Artwork data for Fragments collection
+const artworkData = {
+    'Fragments I': {
+        image: 'images/fragments-1-compressed.jpg',
+        medium: 'Acrylic on Canvas',
+        size: '21cm × 15cm',
+        price: '$400',
+        description: 'Intersecting lines reach for completion but remain untethered, suggesting a rhythm of connection and loss. The composition captures a moment between cohesion and collapse, where form breathes through absence.'
+    },
+    'Fragments II': {
+        image: 'images/fragments-2-compressed.jpg',
+        medium: 'Acrylic on Canvas',
+        size: '21cm × 15cm',
+        price: '$400',
+        description: 'Raw-edged rectangles converge and diverge, hinting at structural tension; its crisp pigment and taut alignment anchor the collection\'s opening statement.'
+    },
+    'Fragments III': {
+        image: 'images/fragments-3-compressed.jpg',
+        medium: 'Acrylic on Canvas',
+        size: '21cm × 15cm',
+        price: '$400',
+        description: 'A quiet tension runs through the open geometry; lines reach for connection but stop short, leaving silence in between. The work captures a fleeting equilibrium between order and incompletion, where space itself becomes part of the composition.'
+    },
+    'Fragments IV': {
+        image: 'images/fragments-4-compressed.jpg',
+        medium: 'Acrylic on Canvas',
+        size: '21cm × 15cm',
+        price: '$400',
+        description: 'Lines drift apart with calm detachment, each color retaining its individuality while hinting at a once-shared structure. The composition evokes a quiet aftermath; a stillness that follows separation.'
+    },
+    'Fragments V': {
+        image: 'images/fragments-5-compressed.jpg',
+        medium: 'Acrylic on Canvas',
+        size: '21cm × 15cm',
+        price: '$400',
+        description: 'Intersecting strokes form a loose architecture that feels both deliberate and undone. The composition balances tension and openness, suggesting the moment structure begins to dissolve into motion.'
+    },
+    'Fragments VI': {
+        image: 'images/fragments-6-compressed.jpg',
+        medium: 'Acrylic on Canvas',
+        size: '21cm × 15cm',
+        price: '$400',
+        description: 'The composition drifts between order and emptiness, its open corners leaving room for air and uncertainty. Each stroke reaches outward, as if searching for connection after the grid has come undone.'
+    },
+    'Traces I': {
+        image: 'images/traces-1.jpg',
+        medium: 'Acrylic on Canvas',
+        size: '21cm × 15cm',
+        price: '$450',
+        description: 'A sparse dialogue between color and emptiness. The marks hover with restraint, evoking the first breath after release; the threshold between control and surrender.'
+    },
+    'Traces II': {
+        image: 'images/traces-2.jpg',
+        medium: 'Acrylic on Canvas',
+        size: '21cm × 15cm',
+        price: '$450',
+        description: 'Lines stretch outward and lose their symmetry. The work feels like an echo of structure, where geometry turns into gesture and order begins to dissolve.'
+    },
+    'Traces III': {
+        image: 'images/traces-3.jpg',
+        medium: 'Acrylic on Canvas',
+        size: '21cm × 15cm',
+        price: '$450',
+        description: 'Balanced yet untethered, this composition suggests rhythm through absence. It carries the poise of something once deliberate, now left to drift.'
+    },
+    'Traces IV': {
+        image: 'images/traces-4.jpg',
+        medium: 'Acrylic on Canvas',
+        size: '21cm × 15cm',
+        price: '$450',
+        description: 'Vertical and horizontal gestures meet in quiet intervals, suggesting both alignment and drift. The composition holds tension between rhythm and pause, presence and what remains unsaid.'
+    },
+    'Traces V': {
+        image: 'images/traces-5.jpg',
+        medium: 'Acrylic on Canvas',
+        size: '21cm × 15cm',
+        price: '$450',
+        description: 'Light and space dominate. The few remaining gestures feel like afterimages, faintly recalling the density of earlier compositions.'
+    },
+    'Traces VI': {
+        image: 'images/traces-6.jpg',
+        medium: 'Acrylic on Canvas',
+        size: '21cm × 15cm',
+        price: '$450',
+        description: 'The final piece closes the cycle in near-silence. Minimal, vertical strokes speak of continuity; the persistence of gesture even as form disappears.'
+    }
+};
 
-document.querySelectorAll(".view-btn").forEach(btn => {
-  btn.addEventListener("click", e => {
-    e.preventDefault();
+// Function to open artwork modal - make globally accessible
+window.openArtworkModal = function(artworkTitle) {
+    const artwork = artworkData[artworkTitle];
+    if (!artwork) {
+        console.error('Artwork not found:', artworkTitle);
+        return;
+    }
 
-    const artwork = btn.closest(".artwork-item");
-    modalImg.src = artwork.querySelector("img").src;
-    modalTitle.textContent = artwork.querySelector("h3").textContent;
-    modalMedium.textContent = artwork.querySelector(".artwork-medium").textContent;
-    modalSize.textContent = artwork.querySelector(".artwork-size").textContent;
-    modalPrice.textContent = artwork.querySelector(".artwork-price").textContent;
+    // Get modal elements
+    const modal = document.getElementById('artworkModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMedium = document.getElementById('modalMedium');
+    const modalRarity = document.getElementById('modalRarity');
+    const modalSize = document.getElementById('modalSize');
+    const modalLocation = document.getElementById('modalLocation');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalPurchaseBtn = document.getElementById('modalPurchaseBtn');
 
-    modal.classList.add("active");
-  });
-});
+    // Populate modal with artwork data
+    modalImage.src = artwork.image;
+    modalImage.alt = artworkTitle;
+    modalTitle.textContent = artworkTitle;
+    modalMedium.textContent = artwork.medium;
+    modalRarity.textContent = 'Unique work';
+    modalSize.textContent = artwork.size;
+    modalLocation.textContent = 'Stockholm, Sweden';
+    modalDescription.textContent = artwork.description;
 
-document.querySelector(".modal-close").addEventListener("click", () => {
-  modal.classList.remove("active");
-});
+    // Set up purchase button
+    modalPurchaseBtn.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (typeof handlePaymentLink === 'function') {
+            handlePaymentLink(artworkTitle);
+        } else {
+            console.log('Purchase clicked for:', artworkTitle);
+        }
+    };
 
-window.addEventListener("click", e => {
-  if (e.target === modal) modal.classList.remove("active");
-});
+    // Show modal
+    modal.classList.add('active');
+    
+    // Set up close button
+    const closeBtn = modal.querySelector('.modal-close');
+    if (closeBtn) {
+        closeBtn.onclick = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            modal.classList.remove('active');
+        };
+    }
+    
+    // Close on background click
+    modal.onclick = function(e) {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+        }
+    };
+}
+
+// Legacy modal code - now using simple CSS-only modals
+// (Kept for reference but not executed for Boundaries collection)
+if (document.getElementById("artworkModal")) {
+    const modal = document.getElementById("artworkModal");
+    const modalImg = document.getElementById("modalImage");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalMedium = document.getElementById("modalMedium");
+    const modalSize = document.getElementById("modalSize");
+    const modalPrice = document.getElementById("modalPrice");
+
+    document.querySelectorAll(".view-btn").forEach(btn => {
+        btn.addEventListener("click", e => {
+            // Only prevent default if using JS modal
+            if (btn.getAttribute('href').startsWith('#') && btn.getAttribute('href').includes('-modal')) {
+                // Let the CSS-only modal handle it
+                return;
+            }
+            e.preventDefault();
+
+            const artwork = btn.closest(".artwork-item");
+            modalImg.src = artwork.querySelector("img").src;
+            modalTitle.textContent = artwork.querySelector("h3").textContent;
+            modalMedium.textContent = artwork.querySelector(".artwork-medium").textContent;
+            modalSize.textContent = artwork.querySelector(".artwork-size").textContent;
+            modalPrice.textContent = artwork.querySelector(".artwork-price").textContent;
+
+            modal.classList.add("active");
+        });
+    });
+
+    const modalClose = document.querySelector(".modal-close");
+    if (modalClose) {
+        modalClose.addEventListener("click", () => {
+            modal.classList.remove("active");
+        });
+    }
+
+    window.addEventListener("click", e => {
+        if (e.target === modal) modal.classList.remove("active");
+    });
+}
