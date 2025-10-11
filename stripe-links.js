@@ -14,13 +14,21 @@ const paymentLinks = {
     'Boundaries VIII': 'https://buy.stripe.com/fZucN72QS7CX3jA2WAaVa07',
     'Boundaries IX': 'https://buy.stripe.com/9B6cN7crse1ldYegNqaVa08',
     
-    // Fractures Collection - Real Stripe Payment Links
+    // Fragments Collection - Real Stripe Payment Links
     'Fragments I': 'https://buy.stripe.com/6oU9AVcrsf5p4nE0OsaVa09',
     'Fragments II': 'https://buy.stripe.com/9B64gBbno5uP7zQ1SwaVa0a',
     'Fragments III': 'https://buy.stripe.com/3cI00lbno0avbQ6ap2aVa0b',
     'Fragments IV': 'https://buy.stripe.com/6oUdRbajk1ez7zQ54IaVa0c',
     'Fragments V': 'https://buy.stripe.com/28E4gB1MO7CXg6meFiaVa0d',
-    'Fragments VI': 'https://buy.stripe.com/9B600lbnocXh3jA68MaVa0e'
+    'Fragments VI': 'https://buy.stripe.com/9B600lbnocXh3jA68MaVa0e',
+    
+    // Traces Collection - Real Stripe Payment Links
+    'Traces I': 'https://buy.stripe.com/4gM5kF0IK8H1cUa7cQaVa0f',
+    'Traces II': 'https://buy.stripe.com/bJebJ3gHI1ezf2i9kYaVa0g',
+    'Traces III': 'https://buy.stripe.com/9B63cx1MOe1l8DUfJmaVa0h',
+    'Traces IV': 'https://buy.stripe.com/4gMdRb7782iDf2i8gUaVa0i',
+    'Traces V': 'https://buy.stripe.com/eVq14pezA0av07obt6aVa0j',
+    'Traces VI': 'https://buy.stripe.com/00w5kFbno3mH8DUbt6aVa0k'
 };
 
 // Make function globally accessible

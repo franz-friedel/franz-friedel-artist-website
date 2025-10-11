@@ -84,7 +84,7 @@
                     <div class="artwork-image">
                         <img src="images/fragments-1.jpg" alt="Fragments I" class="artwork-image">
                         <div class="artwork-overlay">
-                            <a href="fragments-1.html" class="view-btn">View Details</a>
+                            <button class="view-btn" onclick="openArtworkModal('Fragments I')">View Details</button>
                         </div>
                     </div>
                     <div class="artwork-info">
@@ -100,7 +100,7 @@
                     <div class="artwork-image">
                         <img src="images/fragments-2.jpg" alt="Fragments II" class="artwork-image">
                         <div class="artwork-overlay">
-                            <a href="fragments-2.html" class="view-btn">View Details</a>
+                            <button class="view-btn" onclick="openArtworkModal('Fragments II')">View Details</button>
                         </div>
                     </div>
                     <div class="artwork-info">
@@ -116,7 +116,7 @@
                     <div class="artwork-image">
                         <img src="images/fragments-3.jpg" alt="Fragments III" class="artwork-image">
                         <div class="artwork-overlay">
-                            <a href="fragments-3.html" class="view-btn">View Details</a>
+                            <button class="view-btn" onclick="openArtworkModal('Fragments III')">View Details</button>
                         </div>
                     </div>
                     <div class="artwork-info">
@@ -132,7 +132,7 @@
                     <div class="artwork-image">
                         <img src="images/fragments-4.jpg" alt="Fragments IV" class="artwork-image">
                         <div class="artwork-overlay">
-                            <a href="fragments-4.html" class="view-btn">View Details</a>
+                            <button class="view-btn" onclick="openArtworkModal('Fragments IV')">View Details</button>
                         </div>
                     </div>
                     <div class="artwork-info">
@@ -148,7 +148,7 @@
                     <div class="artwork-image">
                         <img src="images/fragments-5.jpg" alt="Fragments V" class="artwork-image">
                         <div class="artwork-overlay">
-                            <a href="fragments-5.html" class="view-btn">View Details</a>
+                            <button class="view-btn" onclick="openArtworkModal('Fragments V')">View Details</button>
                         </div>
                     </div>
                     <div class="artwork-info">
@@ -164,7 +164,7 @@
                     <div class="artwork-image">
                         <img src="images/fragments-6-compressed.jpg" alt="Fragments VI" class="artwork-image">
                         <div class="artwork-overlay">
-                            <a href="fragments-6.html" class="view-btn">View Details</a>
+                            <button class="view-btn" onclick="openArtworkModal('Fragments VI')">View Details</button>
                         </div>
                     </div>
                     <div class="artwork-info">
@@ -188,6 +188,26 @@
             </a>
         </div>
     </section>
+
+    <!-- Artwork Modal -->
+    <div id="artworkModal" class="modal" aria-hidden="true">
+        <div class="modal-dialog" role="dialog" aria-modal="true">
+            <div class="modal-left">
+                <img id="modalImage" src="" alt="Artwork image" />
+            </div>
+            <div class="modal-right">
+                <button class="modal-close" aria-label="Close">&times;</button>
+                <h2 id="modalTitle"></h2>
+                <p><strong>Materials:</strong> <span id="modalMedium"></span></p>
+                <p><strong>Rarity:</strong> <span id="modalRarity"></span></p>
+                <p><strong>Dimensions:</strong> <span id="modalSize"></span></p>
+                <p><strong>Location:</strong> <span id="modalLocation"></span></p>
+                <p><strong>Description:</strong></p>
+                <p id="modalDescription"></p>
+                <button class="purchase-btn" id="modalPurchaseBtn">Purchase</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
