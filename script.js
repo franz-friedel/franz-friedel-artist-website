@@ -787,42 +787,42 @@ const artworkData = {
         image: 'images/fragments-1-compressed.jpg',
         medium: 'Acrylic on Canvas',
         size: '21cm × 15cm',
-        price: '$400',
+        price: '€400',
         description: 'Intersecting lines reach for completion but remain untethered, suggesting a rhythm of connection and loss. The composition captures a moment between cohesion and collapse, where form breathes through absence.'
     },
     'Fragments II': {
         image: 'images/fragments-2-compressed.jpg',
         medium: 'Acrylic on Canvas',
         size: '21cm × 15cm',
-        price: '$400',
+        price: '€400',
         description: 'Raw-edged rectangles converge and diverge, hinting at structural tension; its crisp pigment and taut alignment anchor the collection\'s opening statement.'
     },
     'Fragments III': {
         image: 'images/fragments-3-compressed.jpg',
         medium: 'Acrylic on Canvas',
         size: '21cm × 15cm',
-        price: '$400',
+        price: '€400',
         description: 'A quiet tension runs through the open geometry; lines reach for connection but stop short, leaving silence in between. The work captures a fleeting equilibrium between order and incompletion, where space itself becomes part of the composition.'
     },
     'Fragments IV': {
         image: 'images/fragments-4-compressed.jpg',
         medium: 'Acrylic on Canvas',
         size: '21cm × 15cm',
-        price: '$400',
+        price: '€400',
         description: 'Lines drift apart with calm detachment, each color retaining its individuality while hinting at a once-shared structure. The composition evokes a quiet aftermath; a stillness that follows separation.'
     },
     'Fragments V': {
         image: 'images/fragments-5-compressed.jpg',
         medium: 'Acrylic on Canvas',
         size: '21cm × 15cm',
-        price: '$400',
+        price: '€400',
         description: 'Intersecting strokes form a loose architecture that feels both deliberate and undone. The composition balances tension and openness, suggesting the moment structure begins to dissolve into motion.'
     },
     'Fragments VI': {
         image: 'images/fragments-6-compressed.jpg',
         medium: 'Acrylic on Canvas',
         size: '21cm × 15cm',
-        price: '$400',
+        price: '€400',
         description: 'The composition drifts between order and emptiness, its open corners leaving room for air and uncertainty. Each stroke reaches outward, as if searching for connection after the grid has come undone.'
     },
     'Traces I': {
